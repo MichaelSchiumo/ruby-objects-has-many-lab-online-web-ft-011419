@@ -23,9 +23,13 @@ class Post
   end  
   
   def author_name
+<<<<<<< HEAD
     self.author.name if author 
     else 
     nil 
+=======
+    author.name if author 
+>>>>>>> ff9d5dd53f3885c2a7ddccbec0dc0286e8d0d4f8
   end  
 
 end  
