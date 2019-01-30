@@ -1,29 +1,33 @@
-class Author 
-  
-  attr_accessor :name, :posts, :title
-  
+require 'pry'
+
+class Author
+  attr_accessor :name
+
+  @@all = []
+
   def initialize(name)
     @name = name
-    @posts = []
-    @title = title
-  end  
-  
+    @@all << self
+  end
+
+  def self.all
+    @@all
+  end
+
   def add_post(post)
-    post.author = self 
-    @posts << post 
-  end  
-  
-  def add_post_by_title(title)
-    post = Post.new(title) 
-    @posts << post 
     post.author = self
-  end  
-<<<<<<< HEAD
-=======
-  
+  end
+
+  def add_post_by_title(title)
+    post = Post.new(title)
+    post.author = self
+  end
+
+  def posts
+    Post.all.select {|post| post.author == self}
+  end
+
   def self.post_count
     Post.all.count
-  end   
->>>>>>> ff9d5dd53f3885c2a7ddccbec0dc0286e8d0d4f8
-    
+  end
 end
